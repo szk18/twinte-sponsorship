@@ -106,7 +106,6 @@ export default {
   components: {
     EditModal
   },
-  middleware: 'authenticated',
   filters: {
     type (value) {
       return value === 'Subscription' ? 'サブスクリプションによる寄付' : '一回きりの決済による寄付'
@@ -129,6 +128,14 @@ export default {
   computed: {
     paymentItems () {
       return this.payments.filter(e => e.status === 'succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
+    }
+  },
+  async created () {
+    try {
+      await this.$store.dispatch('login')
+      if (!this.$store.getters.authorized) { this.$router.push('/login') }
+    } catch (err) {
+      console.log(err)
     }
   },
   mounted () {

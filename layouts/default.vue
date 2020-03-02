@@ -79,6 +79,7 @@ export default {
   data () {
     return {
       MenuFlg: false,
+      loginState: false,
       items: [
         {
           title: '寄付のお願い',
