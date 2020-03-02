@@ -19,16 +19,13 @@ export const getters = {
 }
 
 export const actions = {
-  login ({ commit }) {
-    this.$axios.$get('/users/me').then(
-      () => {
-        commit('login')
-      }
-    ).catch(
-      (res) => {
-        console.log(res)
-      }
-    )
+  async login ({ commit }) {
+    try {
+      await this.$axios.$get('users/me')
+      commit('login')
+    } catch (err) {
+      console.log(err)
+    }
   },
   logout ({ commit }) {
     this.$axios.$get('/auth/logout')

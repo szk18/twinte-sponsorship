@@ -39,12 +39,12 @@
                 <div />
                 <div />
               </div>
-                <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+              <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
             </div>
             <div class="has-text-right header-button-container">
               <button
                 @click="login()"
-                v-if="!state"
+                v-if="!this.$store.getters.authorized"
                 exact-active-class="is-active"
                 class="button is-primary is-outlined has-text-weight-bold header-button"
               >
@@ -96,12 +96,7 @@ export default {
       isComponentModalActive: false
     }
   },
-  computed: {
-    state () {
-      return this.$store.getters.authorized
-    }
-  },
-  mounted () {
+  created () {
     this.$store.dispatch('login')
   },
   methods: {
