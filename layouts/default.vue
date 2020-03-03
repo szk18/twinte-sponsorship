@@ -29,7 +29,7 @@
           <p><span class="has-text-weight-bold">E-mail</span><br><a href="mailto:info@twinte.net?subject=お問い合わせ">info@twinte.net</a></p>
         </div>
       </aside>
-      <div v-if="this.MenuFlg" @click="openDrawerMenu" class="menu-background" />
+      <div v-if="MenuFlg" @click="openDrawerMenu" class="menu-background" />
       <div class="container nuxt-contents">
         <section class="section">
           <header class="header">
@@ -184,6 +184,7 @@ $sp: 560px;  // スマホ
 }
 
 .nuxt-contents{
+  max-width: 980px;
   min-height: 100vh;
   @include tab {
     width:75vw;
@@ -224,6 +225,7 @@ aside{
     box-sizing:border-box;
     margin-right:10%;
     border-radius: 0px 5px 5px 0px;
+    color: #ffffff;
   }
   .logotitle{
   margin: 1rem 0 1rem 0;
@@ -323,13 +325,13 @@ header{
       right:0;
       top:0;
       height: $sp-header-height;
-      padding:calc( #{$sp-header-height} / 3) 1rem calc( #{$sp-header-height} / 3) 0;
+      padding:calc( #{$sp-header-height} / 3.3) 1rem calc( #{$sp-header-height} / 3.3) 0;
       .header-button{
         width: 30vw;
         height:100%;
         border: 2px solid #E5E5E5 !important;
         color: #E5E5E5 !important;
-        font-size:10px;
+        font-size: 70%;
       }
     }
 

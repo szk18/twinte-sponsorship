@@ -13,31 +13,28 @@
         スライダーを動かして金額を設定し、「寄付する」ボタンを押すと、決済ページへ移動します。
       </p>
       <p class="has-text-centered has-text-primary price">
-        ¥{{ value }}
+        ¥{{ prices[value] }}
       </p>
       <b-field>
         <b-slider
           v-model="value"
-          :min="100"
-          :max="10000"
-          :step="100"
+          :min="0"
+          :max="prices.length-1"
+          :step="1"
           :tooltip="false"
           :rounded="true"
           size="is-medium"
-        >
-          <template v-for="val in [1000,2000,3000,5000,8000,10000]">
-            <b-slider-tick :value="val" :key="val" />
-          </template>
-        </b-slider>
+          ticks
+        />
       </b-field>
       <p class="has-text-primary">
-        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(value*0.964) / 2200)*100)/100 }}ヶ月</span>運営することができます。
+        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(prices[value]*0.964) / 2200)*100)/100 }}ヶ月</span>運営することができます。
       </p>
       <p style="color:#9A9A9A">
-        ※手数料を差し引くとTwin:teには{{ Math.floor(value*0.964) }}円寄付されます。
+        ※手数料を差し引くとTwin:teには{{ Math.floor(prices[value]*0.964) }}円寄付されます。
       </p>
       <div class="buttons">
-        <b-button v-on:click="registerOneTime(value)" type="is-primary" expanded>
+        <b-button v-on:click="registerOneTime_isOK()" type="is-primary" expanded>
           寄付する
         </b-button>
       </div>
@@ -60,7 +57,7 @@
         </nuxt-link>よりいつでもご解約いただけます。
       </p>
       <div style="margin:2rem 0 2rem 0;">
-        <div class="field">
+        <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
             native-value="plan_GZwD2T1hVZVNZd"
@@ -68,7 +65,7 @@
             200円/月
           </b-radio>
         </div>
-        <div class="field">
+        <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
             native-value="plan_GZwDaJIQA5yPex"
@@ -76,7 +73,7 @@
             500円/月
           </b-radio>
         </div>
-        <div class="field">
+        <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
             native-value="plan_GZwD0M4vQGFRPH"
@@ -100,7 +97,8 @@
 export default {
   data () {
     return {
-      value: 500,
+      value: 0,
+      prices: [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000],
       radio: 'plan_GZwD2T1hVZVNZd'
     }
   },
@@ -142,6 +140,23 @@ export default {
         // 失敗時のみ呼び出される
         })
       })
+    },
+    registerOneTime_isOK () {
+      if (!this.$store.getters.authorized) {
+        this.$swal({
+          title: '未ログインのまま寄付しますか？',
+          text: 'ログインしない場合寄付一覧ページにお名前を記載したり、返礼品を受け取ったりすることができません。',
+          showCancelButton: true,
+          confirmButtonText: 'はい',
+          cancelButtonText: 'いいえ'
+        }).then((result) => {
+          if (result.value) {
+            this.registerOneTime(this.prices[this.value])
+          }
+        })
+      } else {
+        this.registerOneTime(this.prices[this.value])
+      }
     }
   }
 }

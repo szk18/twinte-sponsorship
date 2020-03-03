@@ -1,8 +1,7 @@
 <template>
   <section class="section">
-    <div class="card">
-      右上のログインボタンからログインしてください。
-    </div>
+    <!-- <LoginAlert /> -->
+    右上のログインボタンからログインしてください。
   </section>
 </template>
 

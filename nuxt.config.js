@@ -20,19 +20,19 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: "Twin:te Sponsorship"
+        content: 'Twin:te Sponsorship'
       },
       { hid: 'og:type', property: 'og:type', content: 'summary_large_image' },
       { hid: 'og:url', property: 'og:url', content: 'https://sponsorship.twinte.net' },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: "Twin:te スポンサー"
+        content: 'Twin:te スポンサー'
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://www.twinte.net/ogp.jpg'
+        content: 'https://sponsorship.twinte.net/sponsor-ogp.png'
       },
       {
         hid: 'og:description',
@@ -42,7 +42,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `https://www.twinte.net/ogp.jpg`
+        content: `https://sponsorship.twinte.net/sponsor-ogp.png`
       },
       {
         hid: 'twitter:card',
@@ -57,7 +57,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
   /*
@@ -80,7 +80,10 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-153429703-3'
+    }]
   ],
   /*
   ** Nuxt.js modules

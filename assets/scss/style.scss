@@ -33,9 +33,9 @@ $colors: (
 );
 
 // Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
+$link: #4c94bd;
+$link-invert: findColorInvert(#4c94bd);;
+$link-focus-border: #4c94bd;
 
 // Import Bulma and Buefy styles
 @import "~bulma";
@@ -48,8 +48,6 @@ $link-focus-border: $primary;
     font-size: 23px;
     line-height: 28px;
     margin-bottom: 1rem;
-    border-left: 5px solid $primary;
-    padding-left: 1rem;
 }
 
 .title.pagetitle{

@@ -13,6 +13,7 @@
           @click="isComponentModalActive = true"
           class="edit-button is-text"
           icon-left="pencil"
+          style="color:#929292;"
         >
           <span>編集する</span>
         </b-button>
@@ -24,13 +25,13 @@
 
       <div>
         <section class="userinfo">
-          <h2 class="has-text-primary has-text-weight-semibold">
+          <h2 class="has-text-primary has-text-weight-bold">
             現在の表示名
           </h2>
           <p>{{ userName | unregisterd }}</p>
         </section>
         <section class="userinfo">
-          <h2 class="has-text-primary has-text-weight-semibold">
+          <h2 class="has-text-primary has-text-weight-bold">
             リンク
           </h2>
           <p>{{ userUrl | unregisterd }}</p>
@@ -51,11 +52,11 @@
       <h1 class="title">
         サブスクリプションの登録状況
       </h1>
-      <h2 class="has-text-primary has-text-weight-semibold">
+      <h2 class="has-text-primary has-text-weight-bold">
         ご利用中のプラン
       </h2>
       <div v-for="item in history" :key="item.subscription_id" class="history">
-        <span style="line-height:36px" class="has-text-weight-semibold">
+        <span style="line-height:36px" class="has-text-weight-bold">
           {{ item.plan[0].name }}寄付
         </span>
         <!-- <li>登録日：{{ item.start_at | formatDate }}</li> -->
@@ -210,5 +211,14 @@ export default {
 }
 .delete-button {
   text-decoration: none
+}
+
+.title{
+    border-left: 5px solid #00c0c0;
+    padding-left: 1rem;
+}
+.title.pagetitle{
+    border: initial;
+    padding-left: initial;
 }
 </style>
