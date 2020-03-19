@@ -19,6 +19,7 @@
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.3.2",
     "sass-loader": "^8.0.2",
+    "vue-social-sharing": "^2.4.7",
     "vue-sweetalert2": "^3.0.3"
   },
   "devDependencies": {

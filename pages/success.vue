@@ -14,6 +14,22 @@
         マイページ
       </nuxt-link>からユーザー情報の編集や寄付の履歴が確認できます。
     </p>
+    <social-sharing
+      :title="`Twin:teに${amount}円の寄付をしました！`"
+      url="https://sponsorship.twinte.net"
+      description="hoge"
+      hashtags="twinte"
+      twitter-user="te_twin"
+      inline-template
+    >
+      <div>
+        <network network="twitter">
+          <b-icon
+            icon="twitter"
+          />Tweet
+        </network>
+      </div>
+    </social-sharing>
   </section>
 </template>
 

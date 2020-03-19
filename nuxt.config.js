@@ -73,7 +73,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [ '~/plugins/dayjs'
+  plugins: [ '~/plugins/dayjs', '~/plugins/vue-social-sharing'
   ],
   /*
   ** Nuxt.js dev-modules
